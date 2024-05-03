@@ -25,9 +25,9 @@ body {
 	width: 100vw;
 }
 canvas {
-	border: 4px solid #ff1100;
+	border: 4px solid #000000;
 	border-radius: 15px;
-	background: #fa8b77;
+	background: #ffa75e;
 }
 .btns {
 	display: flex;
