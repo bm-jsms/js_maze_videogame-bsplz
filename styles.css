@@ -1,0 +1,75 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+body {
+	background-image: linear-gradient(
+			rgba(11, 86, 224, 0.5),
+			rgba(252, 7, 7, 0.25)
+		),
+		url('./assets/bg-img.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+}
+.game-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	height: 100vh;
+	width: 100vw;
+}
+canvas {
+	border: 4px solid #ff1100;
+	border-radius: 15px;
+	background: #fa8b77;
+}
+.btns {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	width: 100%;
+}
+button {
+	background-color: #fdef05;
+	border-radius: 13px;
+	border-color: #ad4500;
+	font-family: inherit;
+	margin: 0;
+	padding: 5px 20px;
+	width: 100px;
+}
+button:not(:last-child) {
+	margin-right: 10px;
+}
+
+.messages {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	width: 80%;
+	max-width: 460px;
+}
+
+p {
+	display: block;
+	margin: 0;
+	width: 100%;
+}
+
+@media (max-width: 440px) {
+	button {
+		margin-top: 5px;
+	}
+	#up,
+	#down {
+		margin-left: 100%;
+		margin-right: 100%;
+	}
+}
