@@ -1,6 +1,6 @@
 const canvas = document.querySelector('#game');
 
-const ctx = canvas.getContext('2d');
+const game = canvas.getContext('2d');
 
 // window.addEventListener('load', () =>
 // 	alert('Press F11 for a greater experience'),
@@ -25,11 +25,11 @@ const setCanvasSize = () => {
 };
 
 const startGame = () => {
-	ctx.font = elementSize + 'px sans';
-	ctx.textAlign = 'end';
+	game.font = elementSize + 'px sans';
+	game.textAlign = 'end';
 
 	for (let i = 1; i <= 10; i++) {
-		ctx.fillText(emojis['X'], elementSize * i, elementSize);
+		game.fillText(emojis['X'], elementSize * i, elementSize);
 	}
 };
 
