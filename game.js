@@ -61,6 +61,23 @@ const moveDown = () => {
 	console.log('Move succesful');
 };
 
+window.addEventListener('keydown', (event) => {
+	switch (event.key) {
+		case 'ArrowUp':
+			moveUp();
+			break;
+		case 'ArrowLeft':
+			moveLeft();
+			break;
+		case 'ArrowRight':
+			moveRight();
+			break;
+		case 'ArrowDown':
+			moveDown();
+			break;
+	}
+});
+
 btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
 btnRight.addEventListener('click', moveRight);
