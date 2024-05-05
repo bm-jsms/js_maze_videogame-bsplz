@@ -14,6 +14,11 @@ const btnDown = document.querySelector('#down');
 let canvasSize;
 let elementSize;
 
+const playerPosition = {
+	x: undefined,
+	y: undefined,
+};
+
 const setCanvasSize = () => {
 	if (window.innerHeight > window.innerWidth) {
 		canvasSize = window.innerWidth * 0.85;
@@ -33,7 +38,7 @@ const startGame = () => {
 	game.font = elementSize + 'px sans';
 	game.textAlign = 'end';
 
-	const map = maps[1];
+	const map = maps[0];
 	const mapRows = map.trim().split('\n');
 	const mapRowsCols = mapRows.map((row) => row.trim().split(''));
 
@@ -43,22 +48,34 @@ const startGame = () => {
 			const posX = elementSize * (colI + 1);
 			const posY = elementSize * (rowI + 1);
 
+			if (col === 'O') {
+				playerPosition.x = posX;
+				playerPosition.y = posY;
+				console.log(playerPosition);
+			}
+
 			game.fillText(emoji, posX, posY);
 		});
 	});
+
+	game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
 };
 
 const moveUp = () => {
-	console.log('Move succesful');
+	playerPosition.y -= elementSize;
+	movePlayer();
 };
 const moveLeft = () => {
-	console.log('Move succesful');
+	playerPosition.x -= elementSize;
+	movePlayer();
 };
 const moveRight = () => {
-	console.log('Move succesful');
+	playerPosition.x += elementSize;
+	movePlayer();
 };
 const moveDown = () => {
-	console.log('Move succesful');
+	playerPosition.y += elementSize;
+	movePlayer();
 };
 
 window.addEventListener('keydown', (event) => {
@@ -77,6 +94,10 @@ window.addEventListener('keydown', (event) => {
 			break;
 	}
 });
+
+const movePlayer = () => {
+	game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
+};
 
 btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
