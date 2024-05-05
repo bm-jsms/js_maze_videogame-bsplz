@@ -48,5 +48,23 @@ const startGame = () => {
 	});
 };
 
+const moveUp = () => {
+	console.log('Move succesful');
+};
+const moveLeft = () => {
+	console.log('Move succesful');
+};
+const moveRight = () => {
+	console.log('Move succesful');
+};
+const moveDown = () => {
+	console.log('Move succesful');
+};
+
+btnUp.addEventListener('click', moveUp);
+btnLeft.addEventListener('click', moveLeft);
+btnRight.addEventListener('click', moveRight);
+btnDown.addEventListener('click', moveDown);
+
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
