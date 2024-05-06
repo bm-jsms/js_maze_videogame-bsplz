@@ -11,6 +11,7 @@ const btnDown = document.querySelector('#down');
 // 	alert('Press F11 for a greater experience'),
 // );
 let level = 0;
+let lives = 3;
 let canvasSize;
 let elementSize;
 
@@ -102,7 +103,7 @@ const movePlayer = () => {
 	});
 
 	if (enemyCollition) {
-		console.log('Game over');
+		levelFail();
 	}
 
 	game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
@@ -115,6 +116,20 @@ const levelWin = () => {
 		level++;
 		startGame();
 	}
+};
+
+const levelFail = () => {
+	lives--;
+
+	if (lives <= 0) {
+		level = 0;
+		lives = 3;
+	}
+
+	playerPosition.x = undefined;
+	playerPosition.y = undefined;
+
+	startGame();
 };
 
 const moveUp = () => {
