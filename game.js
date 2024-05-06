@@ -19,6 +19,11 @@ const playerPosition = {
 	y: undefined,
 };
 
+const giftPosition = {
+	x: undefined,
+	y: undefined,
+};
+
 const setCanvasSize = () => {
 	if (window.innerHeight > window.innerWidth) {
 		canvasSize = window.innerWidth * 0.85;
@@ -56,6 +61,9 @@ const startGame = () => {
 					playerPosition.y = posY;
 					console.log(playerPosition);
 				}
+			} else if (col === 'I') {
+				giftPosition.x = posX;
+				giftPosition.y = posY;
 			}
 
 			game.fillText(emoji, posX, posY);
@@ -66,6 +74,14 @@ const startGame = () => {
 };
 
 const movePlayer = () => {
+	const giftColitionX =
+		playerPosition.x.toFixed(3) === giftPosition.x.toFixed(3);
+	const giftColitionY =
+		playerPosition.y.toFixed(3) === giftPosition.y.toFixed(3);
+	const giftCollition = giftColitionX && giftColitionY;
+	if (giftCollition) {
+		console.log('Win');
+	}
 	game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
 };
 
