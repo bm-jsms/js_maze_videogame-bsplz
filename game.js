@@ -29,7 +29,7 @@ const setCanvasSize = () => {
 	canvas.setAttribute('width', canvasSize);
 	canvas.setAttribute('height', canvasSize);
 
-	elementSize = canvasSize / 10;
+	elementSize = Math.floor(canvasSize / 10);
 
 	startGame();
 };
@@ -70,20 +70,37 @@ const movePlayer = () => {
 };
 
 const moveUp = () => {
-	playerPosition.y -= elementSize;
-	startGame();
+	if (playerPosition.y - elementSize < elementSize) {
+		console.log('Out of bounds');
+	} else {
+		playerPosition.y -= elementSize;
+		startGame();
+	}
 };
 const moveLeft = () => {
-	playerPosition.x -= elementSize;
-	startGame();
+	if (playerPosition.x - elementSize < elementSize) {
+		console.log('Out of bounds');
+	} else {
+		playerPosition.x -= elementSize;
+		startGame();
+	}
 };
 const moveRight = () => {
-	playerPosition.x += elementSize;
-	startGame();
+	if (playerPosition.x + elementSize > canvasSize) {
+		console.log('Out of bounds');
+	} else {
+		playerPosition.x += elementSize;
+		startGame();
+	}
 };
+
 const moveDown = () => {
-	playerPosition.y += elementSize;
-	startGame();
+	if (playerPosition.y + elementSize > canvasSize) {
+		console.log('Out of bounds');
+	} else {
+		playerPosition.y += elementSize;
+		startGame();
+	}
 };
 
 window.addEventListener('keydown', (event) => {
