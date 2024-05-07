@@ -55,6 +55,10 @@ button:not(:last-child) {
 	margin: 0 auto;
 	width: 80%;
 	max-width: 460px;
+	background: #dbdbdb;
+	border-radius: 0.5rem;
+	padding: 0.25rem;
+	border: 2px solid #000000;
 }
 
 p {
