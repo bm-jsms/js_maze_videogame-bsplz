@@ -9,6 +9,8 @@ const btnDown = document.querySelector('#down');
 
 const spanLives = document.querySelector('#lives');
 const spanTime = document.querySelector('#time');
+const spanRecord = document.querySelector('#record');
+const pResult = document.querySelector('#result');
 
 // window.addEventListener('load', () =>
 // 	alert('Press F11 for a greater experience'),
@@ -60,6 +62,10 @@ const showTime = () => {
 	spanTime.innerHTML = Date.now() - timeStart;
 };
 
+const showRecord = () => {
+	spanRecord.innerHTML = localStorage.getItem('record_time');
+};
+
 const startGame = () => {
 	game.font = elementSize + 'px sans';
 	game.textAlign = 'end';
@@ -75,6 +81,7 @@ const startGame = () => {
 	if (!timeStart) {
 		timeStart = Date.now();
 		timeInterval = setInterval(showTime, 100);
+		showRecord();
 	}
 
 	const mapRows = map.trim().split('\n');
@@ -113,6 +120,22 @@ const startGame = () => {
 
 const gameWin = () => {
 	clearInterval(timeInterval);
+
+	const playerTime = Date.now() - timeStart;
+	const recordTime = localStorage.getItem('record_time');
+
+	if (recordTime) {
+		if (recordTime >= playerTime) {
+			localStorage.setItem('record_time', playerTime);
+			pResult.innerHTML = 'New record: ' + playerTime;
+		} else {
+			pResult.innerHTML = "Sorry you don't have a record";
+		}
+	} else {
+		localStorage.setItem('record_time', playerTime);
+		pResult.innerHTML = 'First record: ' + playerTime;
+	}
+	console.log({ recordTime, playerTime });
 };
 
 const movePlayer = () => {
