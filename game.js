@@ -6,6 +6,7 @@ const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
 const btnDown = document.querySelector('#down');
+const btnReset = document.querySelector('#restart');
 
 const spanLives = document.querySelector('#lives');
 const spanTime = document.querySelector('#time');
@@ -244,6 +245,14 @@ btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
 btnRight.addEventListener('click', moveRight);
 btnDown.addEventListener('click', moveDown);
+btnReset.addEventListener('click', () => {
+	level = 0;
+	lives = 3;
+	timeStart = undefined;
+	playerPosition.x = undefined;
+	playerPosition.y = undefined;
+	startGame();
+});
 
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
