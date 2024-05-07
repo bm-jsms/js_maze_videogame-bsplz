@@ -7,6 +7,8 @@ const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
 const btnDown = document.querySelector('#down');
 
+const spanLives = document.querySelector('#lives');
+
 // window.addEventListener('load', () =>
 // 	alert('Press F11 for a greater experience'),
 // );
@@ -41,6 +43,12 @@ const setCanvasSize = () => {
 
 	startGame();
 };
+const showLives = () => {
+	const heartArray = Array(lives).fill('🧡');
+
+	spanLives.innerText = '';
+	heartArray.forEach((heart) => spanLives.append(heart));
+};
 
 const startGame = () => {
 	game.font = elementSize + 'px sans';
@@ -55,6 +63,8 @@ const startGame = () => {
 
 	const mapRows = map.trim().split('\n');
 	const mapRowsCols = mapRows.map((row) => row.trim().split(''));
+
+	showLives();
 
 	game.clearRect(0, 0, canvasSize, canvasSize);
 	enemyPositions = [];
