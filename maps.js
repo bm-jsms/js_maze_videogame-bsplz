@@ -119,6 +119,8 @@ maps.push(`
   I---XXXXXX
 `);
 
+// console.log(maps.length);
+
 /* 
 
 maps.push(`
