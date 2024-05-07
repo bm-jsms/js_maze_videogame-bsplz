@@ -38,15 +38,20 @@ let enemyPositions = [];
 
 const setCanvasSize = () => {
 	if (window.innerHeight > window.innerWidth) {
-		canvasSize = window.innerWidth * 0.85;
+		canvasSize = window.innerWidth * 0.7;
 	} else {
-		canvasSize = window.innerHeight * 0.85;
+		canvasSize = window.innerHeight * 0.7;
 	}
+
+	canvasSize = Math.floor(canvasSize);
 
 	canvas.setAttribute('width', canvasSize);
 	canvas.setAttribute('height', canvasSize);
 
 	elementSize = Math.floor(canvasSize / 10);
+
+	playerPosition.x = undefined;
+	playerPosition.y = undefined;
 
 	startGame();
 };
@@ -139,10 +144,8 @@ const gameWin = () => {
 };
 
 const movePlayer = () => {
-	const giftColitionX =
-		playerPosition.x.toFixed(3) === giftPosition.x.toFixed(3);
-	const giftColitionY =
-		playerPosition.y.toFixed(3) === giftPosition.y.toFixed(3);
+	const giftColitionX = playerPosition.x === giftPosition.x;
+	const giftColitionY = playerPosition.y === giftPosition.y;
 	const giftCollition = giftColitionX && giftColitionY;
 	if (giftCollition) {
 		levelWin();
